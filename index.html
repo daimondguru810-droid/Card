@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ViewHub - Discover Apps, PDFs & Resources</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f4f5f9;
+      color: #333;
+      padding-bottom: 40px;
+    }
+
+    /* Header Section */
+    .header {
+      background: linear-gradient(135deg, #6c5ce7, #8e44ad);
+      color: #fff;
+      text-align: center;
+      padding: 35px 20px 25px 20px;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+    }
+
+    .header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .header p {
+      font-size: 13px;
+      opacity: 0.9;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .search-container {
+      margin-top: 20px;
+    }
+
+    .search-box {
+      width: 100%;
+      max-width: 380px;
+      padding: 12px 20px;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px 15px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #1e272e;
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    /* Card Box Design */
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 15px 12px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+
+    .card:active {
+      transform: scale(0.98);
+    }
+
+    .card img {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      object-fit: cover;
+      margin-bottom: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e272e;
+      line-height: 1.2;
+    }
+
+    .card p {
+      font-size: 11px;
+      color: #7f8c8d;
+      margin: 4px 0 6px 0;
+      line-height: 1.3;
+      min-height: 28px;
+    }
+
+    /* Rating & Badges */
+    .rating {
+      color: #f1c40f;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .rating span {
+      color: #7f8c8d;
+      margin-left: 2px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .badge-pdf { background-color: #e8fae8; color: #2ec4b6; }
+    .badge-trending { background-color: #e8fae8; color: #2ec4b6; }
+    .badge-popular { background-color: #e8fae8; color: #2ec4b6; }
+    .badge-new { background-color: #e8fae8; color: #2ec4b6; }
+
+    /* Action Buttons */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 10px 0;
+      background: #5d5fef;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(93, 95, 239, 0.3);
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #4b4ded;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      color: #95a5a6;
+    }
+
+    .footer a {
+      color: #5d5fef;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>🚀 ViewHub</h1>
+    <p>Discover Apps, PDFs & Resources</p>
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-box" placeholder="Search Apps or PDFs..." onkeyup="searchCards()">
+    </div>
+  </div>
+
+  <!-- Cards Grid Container -->
+  <div class="container">
+    <h2 class="section-title">Featured Apps & PDFs</h2>
+    
+    <div class="grid" id="cardsGrid">
+
+      <!-- 1. Flipkart PDF (Top Left) -->
+      <div class="card">
+        <img src="images/flipkart-pdf.png" alt="Flipkart">
+        <h3>Flipkart</h3>
+        <p>GiftCode List in PDF</p>
+        <div class="rating">⭐⭐⭐⭐⭐ <span>5.0</span></div>
+        <span class="badge badge-pdf">PDF</span>
+        <a href="https://terasharelink.com/s/1YKKPX7fnvaGUzQN7p7ka1Q" target="_blank" class="btn">Open</a>
+      </div>
+
+      <!-- 2. Amazon PDF (Top Right) -->
+      <div class="card">
+        <img src="images/amazon-pdf.png" alt="Amazon">
+        <h3>Amazon</h3>
+        <p>GiftCode List in PDF</p>
+        <div class="rating">⭐⭐⭐⭐⭐ <span>5.0</span></div>
+        <span class="badge badge-pdf">PDF</span>
+        <a href="https://terasharelink.com/s/1FgjniUtmpPt6btpOCWPBuw" target="_blank" class="btn">Open</a>
+      </div>
+
+      <!-- 3. Flipkart App (Row 2 Left) -->
+      <div class="card">
+        <img src="images/flipkart-app.png" alt="Flipkart App">
+        <h3>Flipkart</h3>
+        <p>GiftCode Gen2.0</p>
+        <div class="rating">⭐⭐⭐⭐⭐ <span>5.0</span></div>
+        <span class="badge badge-trending">Trending</span>
+        <a href="https://terasharelink.com/s/1q67zVDsZUUfnjE9SpR7Q0Q" target="_blank" class="btn">Install</a>
+      </div>
+
+      <!-- 4. Amazon App (Row 2 Right) -->
+      <div class="card">
+        <img src="images/amazon-app.png" alt="Amazon App">
+        <h3>Amazon</h3>
+        <p>GiftCode Gen2.0</p>
+        <div class="rating">⭐⭐⭐⭐⭐ <span>5.0</span></div>
+        <span class="badge badge-popular">Popular</span>
+        <a href="https://terasharelink.com/s/1YdxrsTAXtGC1gM4CtzaR9w" target="_blank" class="btn">Install</a>
+      </div>
+
+      <!-- 5. GiftZone App (Row 3 Left) -->
+      <div class="card">
+        <img src="images/giftzone-app.png" alt="GiftZone App">
+        <h3>GiftZone App</h3>
+        <p>All GiftCode In One Place</p>
+        <div class="rating">⭐⭐⭐⭐⭐ <span>5.0</span></div>
+        <span class="badge badge-new">New</span>
+        <a href="https://terasharelink.com/s/1-Li9YUzDLPTfRfe1THLUDg" target="_blank" class="btn">Install</a>
+      </div>
+
+      <!-- 6. Blinkit Offer PDF (Row 3 Right) -->
+      <div class="card">
+        <img src="images/blinkit-pdf.png" alt="Blinkit Offer">
+        <h3>Blinkit Offer</h3>
+        <p>Gift codes list in PDF</p>
+        <div class="rating">⭐⭐⭐⭐⭐ <span>5.0</span></div>
+        <span class="badge badge-pdf">PDF</span>
+        <a href="https://terasharelink.com/s/1sCt_mcaryEtubFGc76knxw" target="_blank" class="btn">Open</a>
+      </div>
+
+      <!-- 7. RechargePay App (Row 4 Left) -->
+      <div class="card">
+        <img src="images/rechargepay-app.png" alt="RechargePay">
+        <h3>RechargePay</h3>
+        <p>Recharge & Bills</p>
+        <div class="rating">⭐⭐⭐⭐⭐ <span>5.0</span></div>
+        <span class="badge badge-popular">Popular</span>
+        <a href="https://terasharelink.com/s/1izdg_lqQFRL2J07aRuQy0w" target="_blank" class="btn">Install</a>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>© 2026 ViewHub.in</p>
+      <p>
+        <a href="#">Privacy Policy</a> • 
+        <a href="#">Terms & Conditions</a> • 
+        <a href="#">Contact</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Search JavaScript -->
+  <script>
+    function searchCards() {
+      let input = document.getElementById('searchInput').value.toLowerCase();
+      let cards = document.getElementsByClassName('card');
+
+      for (let i = 0; i < cards.length; i++) {
+        let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+        let desc = cards[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+        
+        if (title.includes(input) || desc.includes(input)) {
+          cards[i].style.display = "flex";
+        } else {
+          cards[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
